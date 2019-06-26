@@ -1,0 +1,54 @@
+{{#if products }}
+<div class="row mt-5">
+    <div class="col-sm-6 offset-sm-3 col-md-6 offset-md-3">
+        <ul class="list-group">
+            {{# each products }}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <strong>{{this.item.title}}</strong>
+                <span class="label label-success">Rs {{this.price}}</span>
+
+                {{!-- <div class="btn-group">
+                    <button class="btn btn-primary brn-xs dropdown-toggle" type="button" data-toggle="dropdown">Action<span class="caret"></span></button>
+                    <ul class="dropdown-menu" >
+                        <li class="dropdown-item"><a  href="#">Reduce by 1 </a></li>
+                        <li class="dropdown-item"><a href="#">Remove All</a></li>
+                    </ul>
+                </div> --}}
+                <a href="/decrese/{{this.item._id}}"> <button class="btn fa fa-minus mr-n5" aria-hidden="true" {{#if qty }} {{else}}disabled {{/if}}></button></a>
+                <span id="cheqty" class="badge badge-info">{{this.qty}}</span>
+                <a  href="/incresecart/{{this.item._id}}"><button id="btnplus" class="btn fa fa-plus ml-n5" aria-hidden="true"></button></a>
+                <a href="/delete/{{this.item._id}}"><button class="ml-n5 btn far fa-trash-alt"></button></a>
+             </li>
+            {{/each}}
+        </ul>
+    </div>
+</div>
+<div class="dropdown-divider"></div>
+<div class="row">
+    <div class="col-sm-6 offset-sm-3 col-md-3 offset-md-3">
+        <strong>Total Price: {{totalPrice}} </strong>
+    </div>
+    <div class="col-sm-6 offset-sm-3 col-md-3 offset-md-1">
+        <a href="/checkout"><button type="button" class="btn btn-success" >Checkout</button></a>
+    </div>
+</div>
+<div class="dropdown-divider"></div>
+{{else}}
+
+<div class="row mt-5">
+    <div class="col-sm-6 offset-sm-3 col-md-6 offset-md-3">
+        <h1>No item In Cart</h1>
+        <a href="/"><button class="btn btn-info">Add item into cart </button></a>
+    </div>
+</div>
+
+{{/if}}
+
+{{!-- <script>
+a=document.getElementById("cheqty")
+if(a.textContent ==6){
+    document.getElementById("btnplus").disabled = true;
+}else{
+    document.getElementById("btnplus").disabled = true;
+}
+</script> --}}

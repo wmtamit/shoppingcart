@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-sm-6 col-md-6 offset-sm-3 offset-md-3">
+        <h1>Profile</h1>
+        <hr>
+        <p ></p>your total orders <strong>{{tcq}}</strong> </p>
+        {{# each orders }}
+      
+        <div class="card mt-3">
+            <div class="card-body">
+                <ul class="list-group">
+                    {{# each this.items }}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        {{ this.item.title }} | Qty {{this.qty}}
+                        <span class=" badge badge-info">Total Order Amount:- Rs.{{this.price}}</span>
+                    </li>
+                    {{/each}}
+                </ul>
+             
+            </div>
+            <div class="card-footer"><strong>Rs.{{this.cart.totalPrice}}</strong></div>
+        </div>
+        {{/each }}
+    </div>
+</div>

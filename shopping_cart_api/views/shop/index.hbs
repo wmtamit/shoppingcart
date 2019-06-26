@@ -1,0 +1,42 @@
+
+<div class="row">
+    <div class="col-sm-6 col-md-4 offset-md-4 offset-sm-3">
+        <div id="success" class="alert alert-success" {{#if nomessages}}hidden{{/if}}>
+        {{successMsg}}
+        </div>
+    </div>
+</div>
+{{# each products }}
+<div class="row">
+    {{# each this }}
+
+    <div class="col-sm-12  col-md-4 mt-3 mb-3">
+        <div class="card" style="height:100%;">
+            <img style="height:200px;" src="{{this.imagePath }}" class="card-img-top mx-auto d-block img-fluid img-thumbnail"
+                alt="...">
+            <div class="card-body mt-4 text-center">
+                <h5 class="card-title">{{this.title}}</h5>
+                <p class="card-text text-muted">
+                    {{this.description}}
+                </p>
+
+                <div>
+                    <div class="float-left price font-weight-bold">Rs. {{this.price}}</div>
+                   
+                    <form id="cartview" action="/addToCart/{{this._id}}">
+                    <input value="1" min="1" max="6" style="width:50px;" class="mr-n5" type="number" name="cartqty" id="cartqty">
+                    <button type= "submit" class="btn btn-info border float-right rounded-pill"  id="addcart" name='addcart'>Add to Cart</button>
+                    {{!-- <button  type= "submit" class="btn btn-info border float-right rounded-pill" id="viewcart" name="viewcart">View cart</button> --}}
+                    </form>
+                    
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div>
+{{/each }}
+
+
+{{!-- <script type="text/javascript" src="javascripts/addviewcart.js"></script> --}}
